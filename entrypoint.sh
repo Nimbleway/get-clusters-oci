@@ -1,6 +1,6 @@
 #!/bin/bash
-chmod +x setup-oci-cli.sh
-setup-oci-cli.sh
+chmod +x ./setup-oci-cli.sh
+./setup-oci-cli.sh
 
 GET_ALL="${GET_ALL:-false}"
 
