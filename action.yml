@@ -2,9 +2,6 @@ name: Get Clusters Oracle
 description: Get Clusters Oracle
 author: Eyal Halfon
 inputs:
-  COMPARTMENT_ID:
-    description: 'COMPARTMENT_ID'
-    required: true
   GET_ALL:
     description: 'GET_ALL'
     required: true
@@ -16,7 +13,6 @@ runs:
   using: docker
   image: Dockerfile
   env:
-    COMPARTMENT_ID: ${{ inputs.COMPARTMENT_ID }}
     GET_ALL: ${{ inputs.GET_ALL }}
 branding:
   icon: upload-cloud
