@@ -1,9 +1,19 @@
 name: Get Clusters Oracle
 description: Get Clusters Oracle
 author: Eyal Halfon
+inputs:
+  GET_ALL:
+    description: 'GET_ALL'
+    required: true
+    default: "false"
+outputs:
+  ocids:
+    description: 'ocids'
 runs:
-  using: node16
-  main: main.js
+  using: docker
+  image: Dockerfile
+  env:
+    GET_ALL: ${{ inputs.GET_ALL }}
 branding:
   icon: upload-cloud
   color: green
