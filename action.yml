@@ -5,21 +5,6 @@ inputs:
   COMPARTMENT_ID:
     description: 'COMPARTMENT_ID'
     required: true
-  OCI_CLI_USER:
-    description: 'OCI_CLI_USER'
-    required: true
-  OCI_CLI_FINGERPRINT:
-    description: 'OCI_CLI_FINGERPRINT'
-    required: true
-  OCI_CLI_TENANCY:
-    description: 'OCI_CLI_KEY_CONTENT'
-    required: true
-  OCI_CLI_REGION:
-    description: 'OCI_CLI_REGION'
-    required: true
-  OCI_CLI_KEY_CONTENT:
-    description: 'OCI_CLI_KEY_CONTENT'
-    required: true
   GET_ALL:
     description: 'GET_ALL'
     required: true
@@ -32,11 +17,6 @@ runs:
   image: Dockerfile
   env:
     COMPARTMENT_ID: ${{ inputs.COMPARTMENT_ID }}
-    OCI_CLI_USER: ${{ inputs.OCI_CLI_USER }}
-    OCI_CLI_FINGERPRINT: ${{ inputs.OCI_CLI_FINGERPRINT }}
-    OCI_CLI_TENANCY: ${{ inputs.OCI_CLI_TENANCY }}
-    OCI_CLI_REGION: ${{ inputs.OCI_CLI_REGION }}
-    OCI_CLI_KEY_CONTENT: ${{ inputs.OCI_CLI_KEY_CONTENT }}
     GET_ALL: ${{ inputs.GET_ALL }}
 branding:
   icon: upload-cloud

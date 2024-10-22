@@ -6,5 +6,5 @@ else
   CLUSTERS=$(oci ce cluster list --compartment-id $COMPARTMENT_ID --lifecycle-state ACTIVE --query "data[?contains(\"name\",'$CLUSTER_NAME')] | [?contains(\"name\",'$ENVIRONMENT')] .id")
 fi
 
-echo $CLUSTERS
-echo "ocids=$(echo $CLUSTERS)" >> $GITHUB_OUTPUT
+echo "ocids=${CLUSTERS}"
+echo "ocids=${CLUSTERS}" >> $GITHUB_OUTPUT
