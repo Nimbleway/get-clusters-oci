@@ -1,8 +1,5 @@
 #!/bin/bash
 EXCLUDED_FILE="./excluded_cluster_list.txt"
-CLUSTER_NAME="webit-oci"
-ENVIRONMENT="staging"
-COMPARTMENT_ID="ocid1.compartment.oc1..aaaaaaaafnrvqjgsvwytt42sx6mxrmg7xcedrn36akmytcq2pjh4uir2puja"
 
 if ! command -v oci &> /dev/null
 then
