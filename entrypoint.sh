@@ -1,5 +1,5 @@
 #!/bin/bash
-EXCLUDED_FILE="$GITHUB_ACTION_PATH/excluded_cluster_list.txt"
+EXCLUDED_FILE="${{ github.workspace }}/excluded_cluster_list.txt"
 
 if ! command -v oci &> /dev/null
 then
