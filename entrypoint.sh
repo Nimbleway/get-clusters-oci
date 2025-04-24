@@ -1,5 +1,5 @@
 #!/bin/bash
-EXCLUDED_FILE="./excluded_cluster_list.txt"
+EXCLUDED_FILE="excluded_cluster_list.txt"
 
 if ! command -v oci &> /dev/null
 then
