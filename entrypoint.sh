@@ -1,5 +1,13 @@
 #!/bin/bash
-EXCLUDED_FILE="/home/ubuntu/_actions/Nimbleway/get-clusters-oci/vitali-exclude-file/excluded_cluster_list.txt"
+EXCLUDED_FILE="$1"
+
+if [[ -z "$EXCLUDED_FILE" ]]; then
+  echo "Missing exclude file path!"
+  exit 1
+fi
+
+echo "The following clusters got excluded by $EXCLUDED_FILE:"
+cat "$EXCLUDED_FILE"
 
 if ! command -v oci &> /dev/null
 then
