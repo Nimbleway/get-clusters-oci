@@ -1,6 +1,7 @@
 #!/bin/bash
-EXCLUDED_FILE="${{ github.workspace }}/excluded_cluster_list.txt"
-pwd
+EXCLUDED_FILE="/home/ubuntu/_actions/Nimbleway/get-clusters-oci/vitali-exclude-file/excluded_cluster_list.txt"
+echo $GITHUB_ACTION_PATH
+
 if ! command -v oci &> /dev/null
 then
     echo "OCI CLI not found, installing..."
