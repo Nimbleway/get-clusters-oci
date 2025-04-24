@@ -1,6 +1,6 @@
 #!/bin/bash
 EXCLUDED_FILE="${{ github.workspace }}/excluded_cluster_list.txt"
-
+pwd
 if ! command -v oci &> /dev/null
 then
     echo "OCI CLI not found, installing..."
