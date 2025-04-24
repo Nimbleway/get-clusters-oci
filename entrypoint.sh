@@ -11,6 +11,7 @@ sed '/^$/d' "$EXCLUDED_FILE" > "$EXCLUDED_FILE.tmp" && mv "$EXCLUDED_FILE.tmp" "
 
 echo "The following clusters got excluded by $EXCLUDED_FILE:"
 cat "$EXCLUDED_FILE"
+echo "---------------------------------\n"
 
 if ! command -v oci &> /dev/null
 then
