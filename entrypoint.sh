@@ -1,4 +1,9 @@
 #!/bin/bash
+EXCLUDED_FILE="./excluded_cluster_list.txt"
+CLUSTER_NAME="webit-oci"
+ENVIRONMENT="staging"
+COMPARTMENT_ID="ocid1.compartment.oc1..aaaaaaaafnrvqjgsvwytt42sx6mxrmg7xcedrn36akmytcq2pjh4uir2puja"
+
 if ! command -v oci &> /dev/null
 then
     echo "OCI CLI not found, installing..."
@@ -31,7 +36,15 @@ if [ $GET_ALL = true ]; then
   echo $CLUSTERS
   echo "ocids=$(echo $CLUSTERS)" >> $GITHUB_OUTPUT
 else
-  CLUSTERS=$(oci ce cluster list --compartment-id $COMPARTMENT_ID --lifecycle-state ACTIVE --query "data[?contains(\"name\",'$CLUSTER_NAME')] | [?contains(\"name\",'$ENVIRONMENT')] .id")
+  EXCLUDE_EXPR=$(awk '{printf "%s!contains(name, \x27%s\x27)", (NR==1 ? "" : " && "), $0}' "$EXCLUDED_FILE")
+  QUERY="data[?contains(name, '$CLUSTER_NAME') && contains(name, '$ENVIRONMENT')"
+
+  if [ -n "$EXCLUDE_EXPR" ]; then
+    QUERY+=" && $EXCLUDE_EXPR"
+  fi
+  QUERY+="].id"
+
+  CLUSTERS=$(oci ce cluster list --compartment-id $COMPARTMENT_ID --lifecycle-state ACTIVE --query "$QUERY")
   # str=$(echo $CLUSTERS | tr -d '"' | tr -d '\' | tr -d '[' | tr -d ']')
   # IFS=$'\n' read -r -d '' -a MODIFY <<< $str
   # RESULT=$(jq -n '$ARGS.positional' --args "${MODIFY[@]}")
