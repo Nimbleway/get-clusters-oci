@@ -6,6 +6,9 @@ if [[ -z "$EXCLUDED_FILE" ]]; then
   exit 1
 fi
 
+# Remove empty lines
+sed '/^$/d' "$EXCLUDED_FILE" > "$EXCLUDED_FILE.tmp" && mv "$EXCLUDED_FILE.tmp" "$EXCLUDED_FILE"
+
 echo "The following clusters got excluded by $EXCLUDED_FILE:"
 cat "$EXCLUDED_FILE"
 
