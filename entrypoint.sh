@@ -9,9 +9,10 @@ fi
 # Remove empty lines
 sed '/^$/d' "$EXCLUDED_FILE" > "$EXCLUDED_FILE.tmp" && mv "$EXCLUDED_FILE.tmp" "$EXCLUDED_FILE"
 
+printf "---------------------------------"
 echo "The following clusters got excluded by $EXCLUDED_FILE:"
 cat "$EXCLUDED_FILE"
-echo "---------------------------------\n"
+printf "---------------------------------\n"
 
 if ! command -v oci &> /dev/null
 then
